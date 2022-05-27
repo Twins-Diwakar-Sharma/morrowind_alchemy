@@ -1,0 +1,30 @@
+version: "3.9"
+services: 
+  backend_service:
+    build: ./backend
+    container_name: back_cntr
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/appBack
+      - /appBack/node_modules
+  database_service:
+    image: mysql:latest
+    restart: unless-stopped
+    container_name: db_cntr
+    environment:
+      MYSQL_DATABASE: 'alch_db'
+      MYSQL_USER: 'alch_user'
+      MYSQL_PASSWORD: 'fortify_intelligence'
+      MYSQL_ROOT_PASSWORD: 'fortify_intelligence'
+      MYSQL_TCP_PORT: 3500
+    ports:
+      - 3500:3500
+    expose:
+      - 3500
+    volumes:
+      - type: bind
+        source: ./database
+        target: /var/lib/mysql
+
+
