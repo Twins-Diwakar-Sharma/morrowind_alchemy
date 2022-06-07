@@ -1,14 +1,11 @@
 import express from 'express'
-//import cors from 'cors'
-//import bodyParser from 'body-parser'
+import {DataTypes,Sequelize} from 'sequelize'
+import {Effect} from './models/Effect.mjs'
 
 
+const james = Effect.build({name: "James"});
 
 const expressApp = express();
-
-//expressApp.use(bodyParser.json());
-//expressApp.use(cors())
-
 expressApp.listen(3000);
 
 expressApp.get('/', (req, res) => {

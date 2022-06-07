@@ -36,7 +36,7 @@ const User = sequelize.define('User', {
 
 await User.sync();
 
-const jane = User.build({firstName: "Jane", lastName: "Randi"});
+const jane = User.build({firstName: "Jane", lastName: "Ranii"});
 await jane.save();
 
 // express app

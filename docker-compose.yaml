@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     container_name: db_cntr
     environment:
-      MYSQL_DATABASE: 'alch_db'
+      MYSQL_DATABASE: 'morrowind'
       MYSQL_USER: 'alch_user'
       MYSQL_PASSWORD: 'fortify_intelligence'
       MYSQL_ROOT_PASSWORD: 'fortify_intelligence'
