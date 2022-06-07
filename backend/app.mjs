@@ -1,13 +1,24 @@
 import express from 'express'
-//import cors from 'cors'
-//import bodyParser from 'body-parser'
+import {Ingredient} from './models/Ingredient.mjs'
+import Sequelize from 'sequelize'
 
 
+
+const sequelize = new Sequelize('morrowind', 'root', 'fortify_intelligence', {
+    host: 'localhost',
+    dialect: 'mysql',
+    port: '3500',
+    host: 'backend_service',
+});
+
+
+
+Ingredient.initialize(sequelize);
+
+const Yo = Ingredient.build({name:'hackle-lo'});
 
 const expressApp = express();
 
-//expressApp.use(bodyParser.json());
-//expressApp.use(cors())
 
 expressApp.listen(3000);
 
