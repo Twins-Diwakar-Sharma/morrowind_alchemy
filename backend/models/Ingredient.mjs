@@ -3,11 +3,11 @@ import {Sequelize,DataTypes} from 'sequelize'
 const {Model} = Sequelize;
 
 
-class Effect extends Model{
+class Ingredient extends Model{
     static initialize(seq){
-        Effect.init(
+        Ingredient.init(
         {
-            effects_id:{
+            ingredients_id:{
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true,
@@ -19,11 +19,11 @@ class Effect extends Model{
             }
         },{
             sequelize: seq,
-            modelName: 'Effect',
-            tableName: 'Effects'
+            modelName: 'Ingredient',
+            tableName: 'Ingredients'
         });
     }
 }
 
 
-export {Effect};
+export {Ingredient};

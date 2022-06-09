@@ -4,24 +4,36 @@ services:
     build: ./backend
     container_name: back_cntr
     ports:
-      - 3000:3000
+      - ${NODE_PORT}:${NODE_PORT}
+    expose:
+      - ${NODE_PORT}
+    env_file: ./.env
+    environment:
+      - DATABASE=${DATABASE}
+      - DB_USER=${USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_HOST=database_service
+    depends_on:
+      - database_service
     volumes:
       - ./backend:/appBack
       - /appBack/node_modules
+
   database_service:
     image: mysql:latest
     restart: unless-stopped
     container_name: db_cntr
+    env_file: ./.env
     environment:
-      MYSQL_DATABASE: 'morrowind'
-      MYSQL_USER: 'alch_user'
-      MYSQL_PASSWORD: 'fortify_intelligence'
-      MYSQL_ROOT_PASSWORD: 'fortify_intelligence'
-      MYSQL_TCP_PORT: 3500
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD} 
+      MYSQL_TCP_PORT: ${MYSQL_PORT}
+      MYSQL_USER: ${USER}
     ports:
-      - 3500:3500
+      - ${MYSQL_PORT}:${MYSQL_PORT}
     expose:
-      - 3500
+      - ${MYSQL_PORT}
     volumes:
       - type: bind
         source: ./database

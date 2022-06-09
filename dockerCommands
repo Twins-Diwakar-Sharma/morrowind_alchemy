@@ -1,2 +1,3 @@
 removing all images : docker-compose down --rmi all -v
 connect to mysql : docker exec -it db_cntr mysql --user=root --password=fortify_intelligence
+stop images in order to rebuild them: docker-compose down -v 
