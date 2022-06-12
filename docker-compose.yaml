@@ -39,4 +39,16 @@ services:
         source: ./database
         target: /var/lib/mysql
 
+  frontend_service:
+    build: ./frontend
+    container_name: front_cntr
+    ports:
+      - ${VUE_PORT}:${VUE_PORT}
+    expose:
+      - ${VUE_PORT}
+    env_file: ./.env
+    volumes:
+      - ./frontend:/appFront
+      - /appFront/node_modules
+
 
