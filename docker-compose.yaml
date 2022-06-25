@@ -19,6 +19,7 @@ services:
       - ./backend:/appBack
       - /appBack/node_modules
 
+
   database_service:
     image: mysql:latest
     restart: unless-stopped
@@ -50,5 +51,6 @@ services:
     volumes:
       - ./frontend:/appFront
       - /appFront/node_modules
+
 
 

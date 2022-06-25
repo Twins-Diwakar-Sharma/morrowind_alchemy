@@ -1,0 +1,12 @@
+database/*
+
+frontend/node_modules/*
+backend/node_modules/*
+
+!database/Morrowind
+!database/Morrowind/*
+!database/mysql
+!database/mysql/*
+!database/mysql.ibd
+
+

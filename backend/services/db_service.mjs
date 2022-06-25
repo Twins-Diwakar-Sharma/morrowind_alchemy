@@ -46,7 +46,29 @@ async function syncDatabase(){
 }
 
 async function clearDatabase(){
-    await sequelize.sync({force:true})
+    await sequelize.sync({force:true});
 }
 
-export {connect,syncDatabase,clearDatabase};
+async function getIngredients(effect){
+    await Ingredient.findAll({
+        include: [
+            {
+                model: Effect,
+                attributes: ["effects_id","name" ],
+                through: {
+                    where: {
+                        name: effect
+                    }
+                }
+            }
+        ]
+    })
+        .then((ingredients) => {
+            return ingredients;
+        })
+        .catch((err) => {
+            console.log("error in db query ", err);
+        });
+}
+
+export {connect,syncDatabase,clearDatabase, getIngredients};

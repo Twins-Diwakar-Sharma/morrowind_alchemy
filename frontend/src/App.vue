@@ -1,30 +1,34 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <EffectTable/>
+    <IngredientTable/>
 </template>
 
+<script charset="utf-8">
+    import EffectTable from './components/EffectTable.vue'
+    import IngredientTable from './components/IngredientTable.vue'
+    
+    export default {
+        name: 'App',
+        components: {EffectTable, IngredientTable},
+    }
+
+</script>
+
+
 <style>
-#app {
+
+#app{
+    
+
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 10px;
+  justify-items:center;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
