@@ -1,6 +1,6 @@
 <template>
-    <EffectTable/>
-    <IngredientTable/>
+    <EffectTable />
+    <IngredientTable />
 </template>
 
 <script charset="utf-8">
@@ -10,6 +10,7 @@
     export default {
         name: 'App',
         components: {EffectTable, IngredientTable},
+
     }
 
 </script>

@@ -3,7 +3,7 @@
     <div class="EffectTable">
         <input type="text" placeholder="input an effect" name="search" id="effectInput"/> 
         <br>
-        <button @click="getIngredientsOfEffect">Go</button>
+        <button @click="getIngredients">Go</button>
    </div>
 </template>
 
@@ -33,7 +33,8 @@ export default {
     },
     methods: {
 
-        getIngredientsOfEffect() {
+ 
+        getIngredients() {
             let effect = document.getElementById("effectInput").value;
             let jsonObj = {effect : effect}; 
             let backendURL = "http://" + location.hostname + ":3000";
@@ -52,12 +53,17 @@ export default {
             }).then(res => res.json())
                 .then(data => {
                     console.log('success');
-                    console.log(data);
-                }).catch((error)  => {
+                     let ingred = "";    
+                    for(let x in data)
+                    {
+                         ingred += data[x].name + "\n";
+                    }
+                    document.getElementById("ingredientTextArea").value = ingred; 
+                   }).catch((error)  => {
                     console.log('failure'); 
                 });
         },
-    }
+   }
 }
 
 </script>

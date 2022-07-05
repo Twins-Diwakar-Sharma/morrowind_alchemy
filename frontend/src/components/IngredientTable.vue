@@ -1,6 +1,6 @@
 <template>
     <div class="IngredientTable">
-       <textarea name="" id="ingredientTextArea" readonly rows=10 cols=30></textarea> 
+        <textarea name="" id="ingredientTextArea" readonly rows=10 cols=30 ></textarea> 
    </div>
 </template>
 
@@ -17,3 +17,26 @@ textarea {
     color: black;
 } 
 </style>
+
+
+<script>
+    
+export default {
+    name: 'IngredientTable',
+    data() {
+        return{}
+    },
+    methods: {
+    
+    }
+
+}
+
+
+
+    
+</script>
+
+
+
+

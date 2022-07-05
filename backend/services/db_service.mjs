@@ -53,8 +53,11 @@ async function getIngredients(effect){
     const ingredients = await Ingredient.findAll({
         include: {
             model: Effect,
+        },
+        where: {
+            '$Effects.name$' : effect 
         }
-    });
+   });
 
     return ingredients;
 }
