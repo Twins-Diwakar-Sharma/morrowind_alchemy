@@ -52,6 +52,7 @@ export default {
             }).then(res => res.json())
                 .then(data => {
                     console.log('success');
+                    console.log(data);
                 }).catch((error)  => {
                     console.log('failure'); 
                 });

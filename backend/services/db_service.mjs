@@ -50,25 +50,13 @@ async function clearDatabase(){
 }
 
 async function getIngredients(effect){
-    await Ingredient.findAll({
-        include: [
-            {
-                model: Effect,
-                attributes: ["effects_id","name" ],
-                through: {
-                    where: {
-                        name: effect
-                    }
-                }
-            }
-        ]
-    })
-        .then((ingredients) => {
-            return ingredients;
-        })
-        .catch((err) => {
-            console.log("error in db query ", err);
-        });
+    const ingredients = await Ingredient.findAll({
+        include: {
+            model: Effect,
+        }
+    });
+
+    return ingredients;
 }
 
 export {connect,syncDatabase,clearDatabase, getIngredients};
