@@ -9,17 +9,28 @@
 
 <style>
 .EffectTable {
-    background-color: #444444;
-    border: 2px solid red;
+    background-color: #df4545;
     margin: 2px;
     padding: 10px;
 }
 
 input {
-    background-color: black;
-    color: white;
+    background-color: #ff6565;
+    border: none;
+    border-radius: 0.5rem;
+    color: black;
     margin: 10px;
 } 
+
+input:focus{
+ outline: none;
+}
+
+button {
+    background-color: #ff6565;
+    border: 1px solid #df4545;
+}
+
 </style>
 
 <script>
@@ -53,12 +64,12 @@ export default {
             }).then(res => res.json())
                 .then(data => {
                     console.log('success');
-                     let ingred = "";    
-                    for(let x in data)
+                     let ingredListString = "";    
+                    for(let each_element of data)
                     {
-                         ingred += data[x].name + "\n";
+                        ingredListString += each_element.name + "\n";
                     }
-                    document.getElementById("ingredientTextArea").value = ingred; 
+                    document.getElementById("ingredientTextArea").value = ingredListString; 
                    }).catch((error)  => {
                     console.log('failure'); 
                 });

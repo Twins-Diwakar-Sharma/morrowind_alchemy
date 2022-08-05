@@ -6,16 +6,21 @@
 
 <style>
 .IngredientTable {
-    background-color: green;
-    border: 2px solid yellow;
+    background-color: #34df8f;
     margin: 2px;
     padding: 10px;
 }
 
 textarea {
-    background-color: white;
+    background-color: #34ffaf;
     color: black;
+    border: none;
+    border-radius: 0.5rem;
 } 
+
+textarea:focus {
+    outline: none;
+}
 </style>
 
 
