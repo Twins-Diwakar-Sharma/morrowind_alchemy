@@ -4,6 +4,9 @@
             <div id='search'>
                 <input type='text' /> 
             </div>
+            <div>
+                <button @click="getEffectsSubArray">GOTO</button>
+            </div>
         </div>
         <div class='listContainers'>
             <div id='list'>
@@ -23,6 +26,47 @@
     export default {
         name: 'EffectList',
         components: {EffectListItem},
+        length: 5,
+        index: 1,
+        data(){
+            return{
+                EffectArray:[]
+            }
+        },
+        methods: {
+
+        getEffectsSubArray() {
+            let jsonObj = {ind : 1, len : 3}; 
+            let backendURL = "http://" + location.hostname + ":3000";
+            let url = backendURL + "/getEffectsSubArray";
+            fetch (url, {
+                        mode: 'cors',
+                        method: 'post',
+                        headers: {
+                          // "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+                            "Accept": "application/json, text/plain, */*",
+                            "Content-type":"application/json; charset=UTF-8",
+                            "Access-Control-Allow-Origin":"*",  
+                        },
+                       body: JSON.stringify(jsonObj)
+            }).then(res => res.json())
+                .then(data => {
+                    console.log('success');
+                     let ingredListString = "";    
+                    for(let each_element of data)
+                    {
+                        ingredListString += each_element.name + "\n";
+                    }
+                    document.getElementById("ingredientTextArea").value = ingredListString; 
+                   }).catch((error)  => {
+                    console.log('failure'); 
+                });
+        },
+
+
+           
+        }
+
     }
 
 </script>

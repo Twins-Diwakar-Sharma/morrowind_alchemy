@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize'
+import {Op} from 'sequelize'
 
 import {Effect} from '../models/Effect.mjs'
 import {Ingredient} from '../models/Ingredient.mjs'
@@ -49,8 +50,8 @@ async function clearDatabase(){
     await sequelize.sync({force:true});
 }
 
-async function getIngredients(effect){
-    const ingredients = await Ingredient.findAll({
+async function getIngredientsFromEffect(effect){
+    let ingredients = await Ingredient.findAll({
         include: {
             model: Effect,
         },
@@ -62,4 +63,44 @@ async function getIngredients(effect){
     return ingredients;
 }
 
-export {connect,syncDatabase,clearDatabase, getIngredients};
+async function getIngredientsSubArray(ind,len){
+    let ingredients = await Ingredient.findAll({
+        where: {
+            '$ingredients_id$' : {
+                [Op.gte] : ind,
+                [Op.lt] : ind+len-1
+            } 
+        }
+   });
+
+    return ingredients;
+}
+
+async function getEffectsFromIngredient(ingred){
+    let effects = await Effect.findAll({
+        include: {
+            model: Ingredient,
+        },
+        where: {
+            '$Ingredients.name$' : ingred 
+        }
+   });
+
+    return effect;
+}
+
+async function getEffectsSubArray(ind,len){
+    let effects = await Effect.findAll({
+        where: {
+            '$effects_id$' : {
+                [Op.gte] : ind,
+                [Op.lt] : ind+len-1
+            } 
+        }
+   });
+
+    return effects;
+}
+
+
+export {connect,syncDatabase,clearDatabase, getIngredientsFromEffect, getIngredientsSubArray, getEffectsFromIngredient, getEffectsSubArray};

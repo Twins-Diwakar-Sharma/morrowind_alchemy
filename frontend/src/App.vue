@@ -1,29 +1,30 @@
 <template>
-    <div id='SearchEffect'>
-        <EffectList />
+
+    <div id="SearchEffects">
+        <EffectList /> 
     </div>
 
-    <div id='StageEffect'>
-       xyz 1
+    <div id="StageEffects">
+        <EffectTable />
     </div>
 
-    <div id='StageIngredients'>
-       xyz 2
+    <div id="SearchIngredients">
     </div>
 
-    <div id='SearchIngredients'>
-       xyz 3
+    <div id="StageIngredients">
+        <IngredientTable /> 
     </div>
-
-
+    
 </template>
 
 <script charset="utf-8">
-    import EffectList from './components/EffectList.vue'
+import IngredientTable from './components/IngredientTable.vue'
+    import EffectTable from './components/EffectTable.vue'
+import EffectList from './components/EffectList.vue'
     
     export default {
         name: 'App',
-        components: {EffectList},
+        components: {EffectTable,IngredientTable,EffectList},
 
     }
 
@@ -56,11 +57,11 @@ html{
 
 }
 
-#app > #SearchEffect {
+#app > #SearchEffects {
     grid-row: 1 / 4;
 }
 
-#app > #StageEffect {
+#app > #StageEffects {
     grid-column: 2 / 5;
 }
 
