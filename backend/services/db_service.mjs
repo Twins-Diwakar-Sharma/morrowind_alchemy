@@ -68,7 +68,7 @@ async function getIngredientsSubArray(ind,len){
         where: {
             '$ingredients_id$' : {
                 [Op.gte] : ind,
-                [Op.lt] : ind+len-1
+                [Op.lt] : ind+len
             } 
         }
    });
@@ -94,7 +94,7 @@ async function getEffectsSubArray(ind,len){
         where: {
             '$effects_id$' : {
                 [Op.gte] : ind,
-                [Op.lt] : ind+len-1
+                [Op.lt] : ind+len
             } 
         }
    });

@@ -5,6 +5,8 @@
         <br>
         <button @click="getIngredientsFromEffect">Go</button>
         <button @click="getIngredientsSubArray">Goto</button>
+        <br>
+        <ul id="EffectTable_EffectsStaged"></ul>
    </div>
 </template>
 
@@ -45,7 +47,6 @@ export default {
     },
     methods: {
 
- 
         getIngredientsFromEffect() {
             let effect = document.getElementById("effectInput").value;
             let jsonObj = {effect : effect}; 

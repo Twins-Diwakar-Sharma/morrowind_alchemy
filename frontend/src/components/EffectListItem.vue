@@ -1,5 +1,5 @@
 <template>
-    <label :class="{ 'selectedLabel' : selected }" @click='toggleSelected()'>
+    <label :class="{ 'selectedLabel' : selected }" @click='stage'>
         <span class='selected'>{{name}}</span>
     </label>
 </template>
@@ -17,9 +17,14 @@
         },
 
         methods: {
-            toggleSelected(){
+            stage(){
                 this.selected = !this.selected;
-            } 
+                let es = document.getElementById('EffectTable_EffectsStaged');
+                let l = document.createElement('li');
+                l.innerHTML = this.name;
+                es.appendChild(l);
+            }
+
         }
     
     }
